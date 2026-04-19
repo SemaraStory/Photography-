@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Semara.Story | Bali Photography</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #fdf9f2;
+            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M20 30 Q 30 10 50 20 Q 70 30 80 20 Q 85 35 75 45 Q 60 55 50 45 Q 35 35 25 45 Q 15 35 20 30" fill="%23d4b28c" opacity="0.04"/><path d="M70 70 Q 80 60 90 70 Q 85 85 75 80 Q 65 85 70 70" fill="%23b89b7b" opacity="0.04"/></svg>');
+            font-family: 'Figtree', sans-serif;
+            color: #2e241e;
+            line-height: 1.5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            overflow-x: hidden;
+            min-height: 100vh;
+            animation: pageFadeIn 1.2s ease-out;
+        }
+
+        @keyframes pageFadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .bali-wrapper {
+            max-width: 500px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 2rem;
+            position: relative;
+            box-sizing: border-box;
+        }
+
+        /* Ornamen Sudut Bali */
+        .bali-corner {
+            position: relative;
+        }
+        .bali-corner::before,
+        .bali-corner::after {
+            content: "☀";
+            font-size: 2rem;
+            color: #c49a6c;
+            opacity: 0.2;
+            position: absolute;
+            font-weight: 100;
+        }
+        .bali-corner::before {
+            top: -5px;
+            left: -5px;
+            transform: rotate(-15deg);
+            animation: sunGlowLeft 4s infinite alternate ease-in-out;
+        }
+        .bali-corner::after {
+            bottom: -5px;
+            right: -5px;
+            transform: rotate(15deg);
+            animation: sunGlowRight 5s infinite alternate ease-in-out;
+        }
+
+        @keyframes sunGlowLeft {
+            0% { opacity: 0.1; transform: rotate(-15deg) scale(1); }
+            100% { opacity: 0.3; transform: rotate(-10deg) scale(1.1); }
+        }
+        @keyframes sunGlowRight {
+            0% { opacity: 0.15; transform: rotate(15deg) scale(1); }
+            100% { opacity: 0.35; transform: rotate(20deg) scale(1.1); }
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            position: relative;
+            width: 100%;
+        }
+
+        .ornament-top {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+            animation: ornamentPulse 3s infinite alternate;
+        }
+
+        @keyframes ornamentPulse {
+            0% { gap: 8px; opacity: 0.8; }
+            100% { gap: 14px; opacity: 1; }
+        }
+
+        .ornament-line {
+            height: 2px;
+            width: 70px;
+            background: linear-gradient(90deg, transparent, #b48b5a, #d4af7a, #b48b5a, transparent);
+            animation: lineWidth 5s infinite alternate;
+        }
+
+        @keyframes lineWidth {
+            0% { width: 60px; }
+            100% { width: 80px; }
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.2rem;
+            font-weight: 600;
+            letter-spacing: 4px;
+            color: #4a3729;
+            text-shadow: 2px 2px 0 rgba(212, 175, 122, 0.12);
+            margin-bottom: 0.25rem;
+            animation: titleReveal 1s cubic-bezier(0.2, 0.9, 0.4, 1);
+        }
+
+        @keyframes titleReveal {
+            0% { letter-spacing: 12px; opacity: 0; transform: translateY(-10px); }
+            100% { letter-spacing: 4px; opacity: 1; transform: translateY(0); }
+        }
+
+        .subhead {
+            font-size: 1rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            color: #8b6f50;
+            animation: subheadFade 1.4s;
+        }
+
+        @keyframes subheadFade {
+            0% { opacity: 0; letter-spacing: 10px; }
+            100% { opacity: 1; letter-spacing: 6px; }
+        }
+
+        .bali-badge {
+            display: inline-block;
+            background: #e7d9cc;
+            padding: 0.3rem 1.5rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            color: #5a4132;
+            margin-top: 8px;
+            border: 1px solid #cbae93;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+            cursor: pointer;
+            user-select: none;
+            transition: all 0.2s;
+            -webkit-tap-highlight-color: transparent;
+            animation: badgeBounce 1.8s infinite;
+        }
+
+        @keyframes badgeBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
+        }
+
+        .bali-badge i {
+            margin: 0 4px;
+            color: #b17e55;
+        }
+        .bali-badge:active {
+            background: #dac9b8;
+            transform: scale(0.98);
+        }
+
+        .tagline {
+            margin-top: 0.8rem;
+            color: #6b4f3a;
+            font-weight: 300;
+            padding: 0 5px;
+            font-size: 0.95rem;
+            animation: taglineSlide 1.2s;
+        }
+
+        @keyframes taglineSlide {
+            0% { opacity: 0; transform: translateX(-15px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Package grid */
+        .package-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            width: 100%;
+            align-items: center;
+        }
+
+        /* Card */
+        .card {
+            background: #fffcf8;
+            border-radius: 28px 8px 28px 8px;
+            box-shadow: 0 12px 28px -8px rgba(60, 40, 25, 0.12), 0 0 0 1px #ede0d4 inset;
+            padding: 1.6rem 1.4rem 1.8rem;
+            border: 1px solid #e9d6c5;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
+            backdrop-filter: blur(2px);
+            animation: cardFloatIn 0.7s ease-out both;
+        }
+
+        .card:nth-of-type(1) { animation-delay: 0.1s; }
+        .card:nth-of-type(2) { animation-delay: 0.2s; }
+        .card:nth-of-type(3) { animation-delay: 0.3s; }
+        .card:nth-of-type(4) { animation-delay: 0.4s; }
+        .card:nth-of-type(5) { animation-delay: 0.5s; }
+        .card:nth-of-type(6) { animation-delay: 0.6s; }
+
+        @keyframes cardFloatIn {
+            0% { opacity: 0; transform: translateY(30px) scale(0.96); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 30px -8px rgba(90, 60, 30, 0.15);
+            transition: transform 0.25s, box-shadow 0.3s;
+        }
+
+        /* GAMBAR - PERBAIKAN TOTAL */
+        .card-img {
+            width: 100%;
+            height: 180px;
+            border-radius: 20px 4px 20px 4px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            border: 1px solid #d6beaa;
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.6);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #dccfc2;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.6s ease, box-shadow 0.4s;
+            animation: imageZoomIn 0.8s ease-out;
+        }
+
+        @keyframes imageZoomIn {
+            0% { transform: scale(1.05); opacity: 0.7; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .card:hover .card-img {
+            transform: scale(1.01);
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.8), 0 6px 12px rgba(0,0,0,0.05);
+        }
+
+        /* Default background */
+        .img-indoor { background-image: radial-gradient(circle at 30% 40%, #b29178 0%, #d9c3b0 80%); }
+        .img-outdoor { background-image: linear-gradient(145deg, #a48d78, #cdbbaa); }
+        .img-grad { background-image: linear-gradient(45deg, #b89a80, #ddcbbc); }
+        .img-pawiwahan1 { background-image: repeating-linear-gradient(30deg, #9f8872 0px, #cbb7a4 4px); }
+        .img-pawiwahan2 { background-image: radial-gradient(circle at 70% 20%, #c7ae97, #a58c77); }
+        .img-memadik { background-image: linear-gradient(120deg, #b59c86, #8f7b68); }
+
+        .card-img i {
+            font-size: 3.5rem;
+            color: #4a3729;
+            text-shadow: 2px 2px 4px rgba(255,255,255,0.3);
+        }
+
+        .card-img.has-image {
+            background-color: transparent;
+        }
+        .card-img.has-image i {
+            display: none;
+        }
+
+        .card-header {
+            border-bottom: 1px dashed #cbae93;
+            padding-bottom: 0.8rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .card-header i {
+            font-size: 1.7rem;
+            color: #b17e55;
+            background: #f3ede6;
+            padding: 6px;
+            border-radius: 50%;
+            animation: iconSpin 8s infinite linear paused;
+        }
+        .card:hover .card-header i {
+            animation-play-state: running;
+        }
+
+        @keyframes iconSpin {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(8deg); }
+            75% { transform: rotate(-5deg); }
+            100% { transform: rotate(0deg); }
+        }
+
+        .card-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #3f2c1e;
+            line-height: 1.2;
+        }
+        .card-header h2 small {
+            font-size: 0.8rem;
+            font-family: 'Figtree', sans-serif;
+            font-weight: 400;
+            color: #7b5f48;
+            display: block;
+        }
+
+        .price-tag {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #6b442a;
+            margin: 0.4rem 0 1rem 0;
+            font-family: 'Playfair Display', serif;
+            display: flex;
+            align-items: baseline;
+            gap: 5px;
+            border-left: 5px solid #c8a27b;
+            padding-left: 15px;
+            transition: border-left-color 0.3s, transform 0.2s;
+            animation: priceGlow 2.4s infinite alternate;
+        }
+
+        @keyframes priceGlow {
+            0% { border-left-color: #c8a27b; text-shadow: 0 0 0 rgba(180,139,90,0); }
+            100% { border-left-color: #e0b58a; text-shadow: 0 0 4px rgba(180,139,90,0.15); }
+        }
+
+        .card:hover .price-tag {
+            transform: translateX(5px);
+        }
+
+        .price-tag span {
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: #8d6f56;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin: 0.2rem 0 0.5rem;
+        }
+        .feature-list li {
+            padding: 0.45rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            border-bottom: 1px dotted #f0e3d8;
+            font-size: 0.9rem;
+            transition: padding-left 0.2s, background 0.2s;
+        }
+        .feature-list li:hover {
+            padding-left: 6px;
+            background: linear-gradient(90deg, #faf3ec, transparent);
+        }
+
+        .feature-list li i {
+            color: #b17e55;
+            width: 20px;
+            margin-top: 3px;
+            transition: transform 0.2s;
+        }
+        .feature-list li:hover i {
+            transform: scale(1.2);
+        }
+
+        .badge-bali {
+            background: #efe0d2;
+            color: #533f2e;
+            font-size: 0.7rem;
+            padding: 4px 10px;
+            border-radius: 30px;
+            display: inline-block;
+            margin-top: 12px;
+            font-weight: 500;
+            border: 1px solid #dac2ae;
+            width: fit-content;
+            transition: background 0.3s, letter-spacing 0.3s;
+            animation: badgeFadeIn 0.7s;
+        }
+
+        @keyframes badgeFadeIn {
+            0% { opacity: 0; transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .card:hover .badge-bali {
+            background: #edd9c7;
+            letter-spacing: 0.3px;
+        }
+
+        /* Floating buttons */
+        .floating-social {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 998;
+            animation: floatIn 0.8s 0.7s both;
+        }
+
+        @keyframes floatIn {
+            0% { opacity: 0; transform: translateX(30px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+
+        .floating-btn {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: white;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+            text-decoration: none;
+            -webkit-tap-highlight-color: transparent;
+            transition: transform 0.25s, box-shadow 0.3s;
+            animation: btnPulse 3s infinite;
+        }
+
+        @keyframes btnPulse {
+            0% { box-shadow: 0 8px 18px rgba(0,0,0,0.15); }
+            50% { box-shadow: 0 8px 22px rgba(0,0,0,0.25); transform: scale(1.02); }
+            100% { box-shadow: 0 8px 18px rgba(0,0,0,0.15); }
+        }
+
+        .floating-btn:active { opacity: 0.8; transform: scale(0.92); }
+        .wa-btn { background: #25D366; }
+        .ig-btn { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
+
+        /* Panel */
+        .customizer-panel {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            max-width: 400px;
+            height: 100vh;
+            background: #f5ede4;
+            box-shadow: -5px 0 30px rgba(0,0,0,0.15);
+            z-index: 1000;
+            padding: 20px 16px;
+            overflow-y: auto;
+            transition: right 0.35s ease;
+            border-left: 2px solid #b48b5a;
+            -webkit-overflow-scrolling: touch;
+        }
+        .customizer-panel.active { right: 0; }
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #b48b5a;
+        }
+        .panel-header h3 {
+            font-family: 'Playfair Display', serif;
+            color: #3f2c1e;
+        }
+        .close-panel {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #5a3e2e;
+            transition: transform 0.2s;
+        }
+        .close-panel:hover {
+            transform: rotate(90deg);
+        }
+        .customizer-section {
+            background: white;
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            animation: sectionFade 0.5s;
+        }
+        @keyframes sectionFade {
+            0% { opacity: 0; transform: translateY(10px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        .customizer-section h4 {
+            margin-bottom: 14px;
+            color: #4a3729;
+            font-family: 'Playfair Display', serif;
+        }
+        .form-group {
+            margin-bottom: 14px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 6px;
+            font-size: 0.9rem;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1.5px solid #d4bfae;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            background: white;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .form-group input:focus, .form-group select:focus {
+            border-color: #b48b5a;
+            box-shadow: 0 0 0 3px rgba(180,139,90,0.2);
+            outline: none;
+        }
+        .image-upload-area {
+            border: 2px dashed #b48b5a;
+            padding: 16px;
+            text-align: center;
+            border-radius: 16px;
+            cursor: pointer;
+            margin-bottom: 10px;
+            transition: background 0.2s;
+        }
+        .image-upload-area:hover {
+            background: #f9efe6;
+        }
+        .btn-save {
+            background: #b48b5a;
+            color: white;
+            border: none;
+            padding: 14px 20px;
+            border-radius: 40px;
+            font-weight: 600;
+            width: 100%;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.2s, transform 0.1s;
+        }
+        .btn-save:hover {
+            background: #9f7c50;
+        }
+        .btn-save:active {
+            transform: scale(0.98);
+        }
+        .btn-reset {
+            background: #8b6f50;
+            color: white;
+            border: none;
+            padding: 12px 16px;
+            border-radius: 40px;
+            width: 100%;
+            margin-top: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .btn-reset:hover {
+            background: #735e45;
+        }
+        .overlay-dark {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.3);
+            z-index: 999;
+            display: none;
+            backdrop-filter: blur(3px);
+            animation: overlayAppear 0.3s;
+        }
+        @keyframes overlayAppear {
+            from { opacity: 0; } to { opacity: 1; }
+        }
+        .overlay-dark.active { display: block; }
+
+        .bali-pattern {
+            height: 8px;
+            width: 100%;
+            margin: 20px 0;
+            background: repeating-linear-gradient(45deg, #e6d6c6 0px, #e6d6c6 2px, transparent 2px, transparent 8px);
+            animation: patternShift 12s infinite linear;
+        }
+        @keyframes patternShift {
+            0% { background-position: 0 0; }
+            100% { background-position: 20px 10px; }
+        }
+        .footnote {
+            margin-top: 2rem;
+            text-align: center;
+            color: #6f5843;
+            border-top: 1px solid #e3d3c4;
+            padding-top: 1.8rem;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            font-size: 0.85rem;
+            animation: footnoteGlow 2s;
+        }
+        @keyframes footnoteGlow {
+            0% { opacity: 0; border-top-color: transparent; }
+            100% { opacity: 1; border-top-color: #e3d3c4; }
+        }
+        .credit {
+            color: #8f735b;
+            font-size: 0.75rem;
+            margin-top: 6px;
+            text-align: center;
+        }
+        .toast-msg {
+            position: fixed;
+            bottom: 90px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #4a3729;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 14px;
+            z-index: 1001;
+            opacity: 0;
+            transition: opacity 0.3s;
+            white-space: nowrap;
+            animation: toastPop 0.2s;
+        }
+        @keyframes toastPop {
+            0% { transform: translateX(-50%) scale(0.8); }
+            100% { transform: translateX(-50%) scale(1); }
+        }
+        .toast-msg.show { opacity: 1; }
+    </style>
+</head>
+<body>
+    <div class="overlay-dark" id="overlayDark" onclick="closeCustomizer()"></div>
+<div class="toast-msg" id="toast">✅ Tersimpan!</div>
+<div class="customizer-panel" id="customizerPanel">
+    <div class="panel-header">
+        <h3><i class="fas fa-palette"></i> Kustomisasi</h3>
+        <button class="close-panel" onclick="closeCustomizer()">&times;</button>
+    </div>
+    
+    <div class="customizer-section">
+        <h4>🎨 Warna & Tema</h4>
+        <div class="form-group">
+            <label>Warna Background</label>
+            <input type="color" id="bgColor" value="#fdf9f2">
+        </div>
+        <div class="form-group">
+            <label>Warna Kartu</label>
+            <input type="color" id="cardBg" value="#fffcf8">
+        </div>
+        <div class="form-group">
+            <label>Warna Aksen</label>
+            <input type="color" id="primaryColor" value="#b48b5a">
+        </div>
+    </div>
+
+    <div class="customizer-section">
+        <h4>✏️ Teks & Judul</h4>
+        <div class="form-group">
+            <label>Judul Website</label>
+            <input type="text" id="siteTitle" value="Semara.Story" maxlength="30">
+        </div>
+        <div class="form-group">
+            <label>Subjudul</label>
+            <input type="text" id="siteSubhead" value="PHOTOGRAPHY">
+        </div>
+        <div class="form-group">
+            <label>Teks Tagline</label>
+            <input type="text" id="taglineText" value="">
+        </div>
+    </div>
+
+    <div class="customizer-section">
+        <h4>🖼️ Ganti Gambar Paket (6 Slot)</h4>
+        <div class="form-group">
+            <label>Pilih Paket</label>
+            <select id="packageImageSelector">
+                <option value="indoor">1. Indoor Prewedding</option>
+                <option value="outdoor">2. Outdoor Prewedding</option>
+                <option value="grad">3. Graduation</option>
+                <option value="pawiwahan1">4. Pawiwahan 6 Jam</option>
+                <option value="pawiwahan2">5. Pawiwahan 4 Jam</option>
+                <option value="memadik">6. Memadik 10 Jam</option>
+            </select>
+        </div>
+        <div class="image-upload-area" onclick="document.getElementById('imageUpload').click()">
+            <i class="fas fa-cloud-upload-alt"></i> Klik untuk upload gambar
+            <input type="file" id="imageUpload" accept="image/*" style="display:none;">
+        </div>
+        <button class="btn-reset" onclick="resetPackageImages()">Reset Gambar Bawaan</button>
+    </div>
+
+    <button class="btn-save" onclick="saveAllCustomizations()"><i class="fas fa-save"></i> SIMPAN PERMANEN</button>
+    <button class="btn-reset" onclick="resetAllToDefault()">↻ Reset Semua ke Default</button>
+    <button class="btn-save" onclick="exportHTML()" style="background:#4a3729; margin-top:8px;"><i class="fas fa-download"></i> EXPORT HTML</button>
+</div>
+<div class="floating-social">
+    <a href="https://wa.me/6281927310298" target="_blank" class="floating-btn wa-btn"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://instagram.com/semara.story" target="_blank" class="floating-btn ig-btn"><i class="fab fa-instagram"></i></a>
+</div>
+<div class="bali-wrapper bali-corner">
+    <header>
+        <div class="ornament-top">
+            <span class="ornament-line"></span>
+            <i class="fas fa-sun" style="color:#b48b5a;"></i>
+            <span class="ornament-line"></span>
+        </div>
+        <h1 id="mainTitle">Semara.Story</h1>
+        <div class="subhead" id="mainSubhead">PHOTOGRAPHY</div>
+        
+        <div class="bali-badge" id="easterTrigger">
+            <i class="fas fa-map-pin"></i> BALI · ISLAND OF GODS <i class="fas fa-map-pin"></i>
+        </div>
+        <div class="tagline" id="mainTagline">
+            <i class="fas fa-feather-alt"></i>  <i class="fas fa-feather-alt"></i>
+        </div>
+    </header>
+
+    <div class="package-grid">
+                <!-- HALAMAN 1 - Indoor Prewedding -->
+        <div class="card">
+            <div class="card-img img-indoor has-image" id="img-indoor" style="background-image: url('https://i.postimg.cc/2yXPp3mb/Screenshot-20260419-170110-Whats-App-3.jpg'); background-size: cover; background-position: center;"></div>
+            <div class="card-header"><i class="fas fa-door-open"></i><h2>Prewedding <small>Indoor Package</small></h2></div>
+            <div class="price-tag">Start from Rp 1.500.000</div>
+            <ul class="feature-list">
+                <li><i class="fas fa-check-circle"></i> 15 Editing Photos</li>
+                <li><i class="fas fa-images"></i> All Original File Photos</li>
+                <li><i class="fas fa-video"></i> Video Slideshow</li>
+                <li><i class="fas fa-print"></i> <strong>Free</strong> 1 Cetak Foto Ukuran 40x60 (16R Jumbo)</li>
+            </ul>
+            <div class="badge-bali"><i class="fas fa-temple"></i> </div>
+        </div>
+
+        <!-- HALAMAN 2 - Outdoor Prewedding -->
+        <div class="card">
+            <div class="card-img img-outdoor has-image" id="img-outdoor" style="background-image: url('https://i.postimg.cc/v8jqdJff/Screenshot-20260419-170119-Whats-App-4.jpg'); background-size: cover; background-position: center;"></div>
+            <div class="card-header"><i class="fas fa-umbrella-beach"></i><h2>Prewedding <small>Outdoor Package</small></h2></div>
+            <div class="price-tag">Start from Rp 2.100.000</div>
+            <ul class="feature-list">
+                <li><i class="fas fa-check-circle"></i> 20 Editing Photos</li>
+                <li><i class="fas fa-images"></i> All Original File Photos</li>
+                <li><i class="fas fa-video"></i> Video Slideshow</li>
+                <li><i class="fas fa-print"></i> <strong>Free</strong> 1 Cetak Foto Ukuran 40x60 (16R Jumbo)</li>
+            </ul>
+            <div class="badge-bali"><i class="fas fa-leaf"></i> </div>
+        </div>
+
+        <!-- HALAMAN 3 - Graduation -->
+        <div class="card">
+            <div class="card-img img-grad has-image" id="img-grad" style="background-image: url('https://i.postimg.cc/qvcjygSr/Screenshot-20260419-170123-Whats-App-3.jpg'); background-size: cover; background-position: center;"></div>
+            <div class="card-header"><i class="fas fa-user-graduate"></i><h2>Graduation <small>Graduate & Family</small></h2></div>
+            <div class="price-tag">Rp 500.000</div>
+            <ul class="feature-list">
+                <li><i class="fas fa-check-circle"></i> 30 File Edit</li>
+                <li><i class="fas fa-users"></i> 1 Graduate & Family</li>
+                <li><i class="fas fa-images"></i> All File Original</li>
+                <li><i class="fas fa-clock"></i> 60 Menit Photoshoot</li>
+                <li><i class="fas fa-car"></i> <strong>Free Transport</strong></li>
+            </ul>
+            <div class="badge-bali"><i class="fas fa-university"></i> </div>
+        </div>
+                <!-- HALAMAN 4 - Pawiwahan 6 Jam -->
+        <div class="card">
+            <div class="card-img img-pawiwahan1 has-image" id="img-pawiwahan1" style="background-image: url('https://i.postimg.cc/V6hRmtrY/Screenshot-20260419-170136-Whats-App-3.jpg'); background-size: cover; background-position: center;"></div>
+            <div class="card-header"><i class="fas fa-clock"></i><h2>Pawiwahan <small>Foto & Video 6 Jam</small></h2></div>
+            <div class="price-tag">Rp 3.500.000</div>
+            <ul class="feature-list">
+                <li><i class="fas fa-clock"></i> 6 Jam Kerja</li>
+                <li><i class="fas fa-check-circle"></i> 200 Foto Edit</li>
+                <li><i class="fas fa-cloud"></i> All File Original by Google Drive</li>
+                <li><i class="fas fa-video"></i> Video Full & Video Highlight 2-3 Menit</li>
+                <li><i class="fas fa-print"></i> <strong>Free</strong> 1 Cetak Foto Ukuran 40x60 (16R Jumbo)</li>
+            </ul>
+            <div class="badge-bali"><i class="fas fa-praying-hands"></i> </div>
+        </div>
+
+        <!-- HALAMAN 5 - Pawiwahan 4 Jam -->
+        <div class="card">
+            <div class="card-img img-pawiwahan2 has-image" id="img-pawiwahan2" style="background-image: url('https://i.postimg.cc/z3ZFR1FP/Screenshot-20260419-170139-Whats-App-3.jpg'); background-size: cover; background-position: center;"></div>
+            <div class="card-header"><i class="fas fa-hourglass-start"></i><h2>Pawiwahan <small>Foto & Video 4 Jam</small></h2></div>
+            <div class="price-tag">Rp 2.200.000</div>
+            <ul class="feature-list">
+                <li><i class="fas fa-clock"></i> 4 Jam Kerja</li>
+                <li><i class="fas fa-check-circle"></i> 150 Foto Edit</li>
+                <li><i class="fas fa-cloud"></i> All File Original by Google Drive</li>
+                <li><i class="fas fa-video"></i> Video Full & Video Highlight 2-3 Menit</li>
+                <li><i class="fas fa-print"></i> <strong>Free</strong> 1 Cetak Foto Ukuran 40x60 (16R Jumbo)</li>
+            </ul>
+            <div class="badge-bali"><i class="fas fa-camera"></i> </div>
+        </div>
+
+        <!-- HALAMAN 6 - Memadik & Pawiwahan 10 Jam -->
+        <div class="card">
+            <div class="card-img img-memadik has-image" id="img-memadik" style="background-image: url('https://i.postimg.cc/x1PBYs0G/Screenshot-20260419-170143-Whats-App-3.jpg'); background-size: cover; background-position: center;"></div>
+            <div class="card-header"><i class="fas fa-gem"></i><h2>Memadik & Pawiwahan <small>Foto & Video 10 Jam</small></h2></div>
+            <div class="price-tag">Rp 5.000.000</div>
+            <ul class="feature-list">
+                <li><i class="fas fa-clock"></i> 10 Jam Kerja</li>
+                <li><i class="fas fa-check-circle"></i> 400 Foto Edit</li>
+                <li><i class="fas fa-cloud"></i> All File Original by Google Drive</li>
+                <li><i class="fas fa-video"></i> Video Full & Video Highlight 2-3 Menit</li>
+                <li><i class="fas fa-print"></i> <strong>Free 2 Cetak</strong> Foto Ukuran 40x60 (16R Jumbo)</li>
+            </ul>
+            <div class="badge-bali"><i class="fas fa-gem"></i> </div>
+        </div>
+    </div>
+
+    <div class="bali-pattern"></div>
+    <div class="footnote">
+        <span><i class="fas fa-umbrella-beach"></i> Semara Story Photography – Bali</span>
+        <span><i class="fab fa-whatsapp"></i> +62 877-5070-0748  ·  <i class="fab fa-instagram"></i> @semara.story</span>
+    </div>
+    <div class="credit"><i class="fas fa-camera"></i> #SemaraStoryBali · Mengabadikan cinta dalam balutan budaya</div>
+</div>
+<script>
+    let clickCount = 0;
+    const trigger = document.getElementById('easterTrigger');
+    trigger.addEventListener('click', function() {
+        clickCount++;
+        if(clickCount === 3) { openCustomizer(); clickCount = 0; }
+        setTimeout(() => { clickCount = 0; }, 1000);
+    });
+
+    function openCustomizer() {
+        document.getElementById('customizerPanel').classList.add('active');
+        document.getElementById('overlayDark').classList.add('active');
+    }
+    function closeCustomizer() {
+        document.getElementById('customizerPanel').classList.remove('active');
+        document.getElementById('overlayDark').classList.remove('active');
+    }
+
+    function loadSettings() {
+        const saved = localStorage.getItem('semaraCustom');
+        if(saved) {
+            try {
+                const s = JSON.parse(saved);
+                applySettings(s);
+                document.getElementById('bgColor').value = s.bgColor || '#fdf9f2';
+                document.getElementById('cardBg').value = s.cardBg || '#fffcf8';
+                document.getElementById('primaryColor').value = s.primaryColor || '#b48b5a';
+                document.getElementById('siteTitle').value = s.siteTitle || 'Semara.Story';
+                document.getElementById('siteSubhead').value = s.siteSubhead || 'PHOTOGRAPHY';
+                document.getElementById('taglineText').value = s.taglineText || '';
+                if(s.customImages) {
+                    for(let key in s.customImages) {
+                        const el = document.getElementById('img-'+key);
+                        if(el) { el.style.backgroundImage = `url('${s.customImages[key]}')`; el.style.backgroundSize='cover'; el.innerHTML = ''; el.classList.add('has-image'); }
+                    }
+                }
+            } catch(e) {}
+        }
+    }
+
+    function applySettings(s) {
+        if(s.bgColor) document.body.style.backgroundColor = s.bgColor;
+        if(s.cardBg) document.querySelectorAll('.card').forEach(c => c.style.backgroundColor = s.cardBg);
+        if(s.siteTitle) document.getElementById('mainTitle').innerText = s.siteTitle;
+        if(s.siteSubhead) document.getElementById('mainSubhead').innerText = s.siteSubhead;
+        if(s.taglineText !== undefined) {
+            document.getElementById('mainTagline').innerHTML = `<i class="fas fa-feather-alt"></i> ${s.taglineText} <i class="fas fa-feather-alt"></i>`;
+        }
+    }
+
+    function saveAllCustomizations() {
+        const settings = {
+            bgColor: document.getElementById('bgColor').value,
+            cardBg: document.getElementById('cardBg').value,
+            primaryColor: document.getElementById('primaryColor').value,
+            siteTitle: document.getElementById('siteTitle').value,
+            siteSubhead: document.getElementById('siteSubhead').value,
+            taglineText: document.getElementById('taglineText').value,
+            customImages: {}
+        };
+        ['indoor','outdoor','grad','pawiwahan1','pawiwahan2','memadik'].forEach(id => {
+            const el = document.getElementById('img-'+id);
+            if(el) {
+                const bg = el.style.backgroundImage;
+                if(bg && bg !== 'none') {
+                    const match = bg.match(/url\(["']?([^"')]+)["']?\)/);
+                    if(match) settings.customImages[id] = match[1];
+                }
+            }
+        });
+        localStorage.setItem('semaraCustom', JSON.stringify(settings));
+        applySettings(settings);
+        showToast('✅ Kustomisasi tersimpan!');
+        closeCustomizer();
+    }
+
+    function showToast(msg) {
+        const t = document.getElementById('toast');
+        t.innerText = msg; t.classList.add('show');
+        setTimeout(() => t.classList.remove('show'), 2000);
+    }
+
+    function resetAllToDefault() {
+        if(confirm('Reset semua?')) { localStorage.removeItem('semaraCustom'); location.reload(); }
+    }
+
+    function resetPackageImages() {
+        if(confirm('Reset gambar?')) {
+            const def = ['indoor','outdoor','grad','pawiwahan1','pawiwahan2','memadik'];
+            const urls = ['https://i.ibb.co.com/M5NdFTsR/Screenshot-20260412-080559-Whats-App.jpg','https://i.ibb.co.com/60nFLRZ3/Screenshot-20260412-080633-Whats-App.jpg','https://i.ibb.co.com/kszLD8nn/Screenshot-20260412-080643-Whats-App.jpg','https://i.ibb.co.com/cXLws512/Screenshot-20260412-080658-Whats-App.jpg','https://i.ibb.co.com/pj5tTJ8j/Screenshot-20260412-080705-Whats-App.jpg','https://i.ibb.co.com/GfNxy2WW/Screenshot-20260412-080713-Whats-App.jpg'];
+            def.forEach((id,i) => {
+                const el = document.getElementById('img-'+id);
+                el.style.backgroundImage = `url('${urls[i]}')`;
+                el.style.backgroundSize = 'cover';
+                el.innerHTML = '';
+                el.classList.add('has-image');
+            });
+        }
+    }
+
+    document.getElementById('imageUpload').addEventListener('change', function(e) {
+        const f = e.target.files[0];
+        if(f) {
+            const r = new FileReader();
+            r.onload = ev => {
+                const pkg = document.getElementById('packageImageSelector').value;
+                const el = document.getElementById('img-'+pkg);
+                el.style.backgroundImage = `url('${ev.target.result}')`;
+                el.style.backgroundSize = 'cover';
+                el.innerHTML = '';
+                el.classList.add('has-image');
+            };
+            r.readAsDataURL(f);
+        }
+        this.value = '';
+    });
+
+    function exportHTML() {
+        const blob = new Blob([document.documentElement.outerHTML], {type: 'text/html'});
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'semara-story.html';
+        a.click();
+        showToast('📥 HTML terdownload!');
+    }
+
+    window.onload = loadSettings;
+</script>
+</body>
+</html>
