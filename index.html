@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MonogaPhotobooth | Your Story Instantly Captured</title>
+<meta name="description" content="MonogaPhotobooth - Your Story Instantly Captured. Part of Semara Story and Dndbouquet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- PRELOADER -->
+<div class="preloader" id="preloader">
+    <div class="preloader-content">
+        <div class="preloader-logo">
+            <img src="https://raw.githubusercontent.com/MonogaPhotoBooth/Monoga.Photobooth/main/MonogaLogo.jpg" alt="Monoga">
+        </div>
+        <div class="preloader-brand">
+            <span>M</span><span>o</span><span>n</span><span>o</span><span>g</span><span>a</span>
+        </div>
+        <div class="preloader-progress">
+            <div class="preloader-progress-bar" id="preloaderBar"></div>
+        </div>
+        <div class="preloader-counter">
+            <span id="preloaderCount">0</span><span>%</span>
+        </div>
+    </div>
+</div>
+
+<!-- BACKGROUND -->
+<div class="blob-container">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+</div>
+<div class="grain"></div>
+
+<!-- SHARE BUTTON -->
+<button id="shareBtn" class="share-button" aria-label="Bagikan Profil">
+    <i class="fas fa-share-alt"></i>
+</button>
+
+<main class="main-wrapper" id="mainWrapper">
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                <span class="badge-text">PHOTOBOOTH STUDIO</span>
+            </div>
+
+            <div class="hero-logo-wrapper">
+                <div class="hero-logo-ring"></div>
+                <img class="hero-logo" src="https://raw.githubusercontent.com/MonogaPhotoBooth/Monoga.Photobooth/main/MonogaLogo.jpg" alt="MonogaPhotoBooth">
+            </div>
+
+            <h1 class="hero-title">
+                <span class="title-line"><span class="title-word">@Monoga</span></span>
+                <span class="title-line"><span class="title-word italic">Photobooth</span></span>
+            </h1>
+
+            <p class="hero-tagline">Your Story Instantly Captured 📸✨</p>
+
+            <div class="hero-divider">
+                <span></span>
+                <i class="fas fa-camera-retro"></i>
+                <span></span>
+            </div>
+
+            <p class="hero-subtitle">
+                Part Of <span class="highlight">Semara Story</span> And <span class="highlight">Dndbouquet</span>
+            </p>
+        </div>
+
+        <div class="scroll-indicator">
+            <div class="scroll-line"></div>
+            <span>SCROLL</span>
+        </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <section class="marquee-section">
+        <div class="marquee">
+            <div class="marquee-track">
+                <span>CAPTURING MOMENTS ✦ </span>
+                <span>YOUR STORY ✦ </span>
+                <span>INSTANTLY CAPTURED ✦ </span>
+                <span>MONOGA PHOTOBOOTH ✦ </span>
+                <span>WEDDING ✦ EVENT ✦ PILATES ✦ </span>
+                <span>CAPTURING MOMENTS ✦ </span>
+                <span>YOUR STORY ✦ </span>
+                <span>INSTANTLY CAPTURED ✦ </span>
+                <span>MONOGA PHOTOBOOTH ✦ </span>
+                <span>WEDDING ✦ EVENT ✦ PILATES ✦ </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS (diisi dari app.js) -->
+    <section class="stats-section">
+        <div class="stats-grid" id="statsContainer"></div>
+    </section>
+
+    <!-- SOCIAL LINKS (diisi dari app.js) -->
+    <section class="links-section">
+        <div class="section-header reveal">
+            <span class="section-label">Connect With Us</span>
+            <h2 class="section-title">Let's Create <em>Together</em></h2>
+        </div>
+        <div class="links-grid" id="linksContainer"></div>
+    </section>
+
+    <!-- QUOTE -->
+    <section class="quote-section">
+        <div class="quote-inner reveal">
+            <i class="fas fa-camera-retro quote-icon"></i>
+            <p class="quote-text" id="quoteText"></p>
+            <span class="quote-author">— Monoga Photobooth</span>
+        </div>
+    </section>
+
+    <!-- ALBUMS -->
+    <section class="albums-section">
+        <div class="section-header reveal">
+            <span class="section-label">Our Portfolio</span>
+            <h2 class="section-title">Download <em>Album</em></h2>
+            <p class="section-desc">Jelajahi koleksi album dari setiap momen yang kami abadikan.</p>
+        </div>
+        <div class="albums-grid" id="albumsContainer"></div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <h3>Monoga<span>Photobooth</span></h3>
+                <p>Your Story Instantly Captured</p>
+            </div>
+            <div class="footer-bottom">
+                <p>Bergabung dengan MonogaPhotoBooth</p>
+                <div class="footer-links">
+                    <a href="#">Cookie Preferences</a>
+                    <a href="#">Report</a>
+                    <a href="#">Privacy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</main>
+
+<!-- SCROLL TO TOP + PROGRESS RING -->
+<button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+    <svg class="progress-ring" viewBox="0 0 48 48">
+        <circle class="progress-ring-bg" cx="24" cy="24" r="22"></circle>
+        <circle class="progress-ring-fill" id="progressRing" cx="24" cy="24" r="22"></circle>
+    </svg>
+    <i class="fas fa-arrow-up"></i>
+</button>
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+    <i class="fas fa-check-circle"></i>
+    <span id="toastMessage">Link berhasil disalin!</span>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
